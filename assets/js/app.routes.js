@@ -35,6 +35,11 @@
 				controller: 'UserController',
 				controllerAs: 'UserController',
 			})
+			.when('/ecommerce', {
+				templateUrl: 'pages/ecommerce/ecommerce.html',
+				controller: 'ECommerceController',
+				controllerAs: 'ECommerceController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());

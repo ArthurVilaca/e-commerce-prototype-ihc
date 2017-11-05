@@ -28,8 +28,24 @@
                 password: '123'
         }];
 
+        var products = [{
+                id: 1,
+                name: 'Batata Rufles',
+                price: 22.30,
+            },{
+                id: 1,
+                name: 'hipoglos',
+                price: 12.90,
+            },{
+                id: 1,
+                name: 'Bandaid',
+                price: 99.99,
+        }];
+
         var service = {
-            users: users
+            users: users,
+            products: products,
+            cart: []
         }
 
         $rootScope.getData = function(data, id) {
