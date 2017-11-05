@@ -8,7 +8,8 @@
         'app.login',
         'app.users',
         'app.service',
-        'app.ecommerce'
+        'app.ecommerce',
+        'app.clients'
     ]);
     angular.module('app.routes', ['ngRoute', 'ngMaterial']);
     angular.module('app.home', []);
@@ -17,6 +18,7 @@
     angular.module('app.users', []);
     angular.module('app.service', []);
     angular.module('app.ecommerce', []);
+    angular.module('app.clients', []);
 
     angular.module('app').controller('AppCtrl', function($scope, $location, $mdSidenav) {
         $scope.isSpecificPage = function() {
@@ -38,6 +40,11 @@
 
         $scope.toUsers = function() {
             $location.path( "/users" );
+            $mdSidenav('left').close();
+        };
+
+        $scope.toClients = function() {
+            $location.path( "/clients" );
             $mdSidenav('left').close();
         };
 
@@ -137,6 +144,42 @@
         $scope.removeFromCart = function(id) {
             $rootScope.deleteData('cart', id);
             $scope.cart = $rootScope.getData('cart');
+        };
+
+    });
+
+    angular.module('app.clients').controller('ClientsController', function($scope, $rootScope, $location) {
+        $scope.toHome = function() {
+            $location.path( "/home" );
+        };
+
+        $scope.new = function() {
+            $location.path( "/client/new" );
+        };
+
+        $scope.edit = function(id) {
+            $location.path( "/client/" + id );
+        };
+
+        $scope.delete = function(id) {
+            $scope.clients = $rootScope.deleteData('clients', id);
+            $scope.clients = $rootScope.getData('clients');
+        };
+
+        $scope.clients = $rootScope.getData('clients');
+    });
+
+    angular.module('app.clients').controller('ClientController', function($scope, $rootScope, $location, $routeParams) {
+        
+        if($routeParams.id) {
+            $scope.client = $rootScope.getData('clients', $routeParams.id);
+            $scope.client._birth = new Date($scope.client.birth);
+        }
+        
+        $scope.save = function() {
+            $scope.client.birth = $rootScope.formatServerDate($scope.client._birth);
+            $rootScope.saveData('clients', $scope.client);
+            $location.path( "/clients" );
         };
 
     });
