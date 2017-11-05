@@ -1,0 +1,24 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="100" layout="column">
+
+        <md-card md-theme-watch ng-repeat="user in users">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{ user.name }}</span>
+                    <span class="md-subhead">CPF: {{ user.registration_code }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="edit(user.id)" >Editar</md-button>
+                <md-button ng-click="delete(user.id)">Excluir</md-button>
+            </md-card-actions>
+        </md-card>
+
+    </div>
+
+    <div class="button-float">
+        <md-button class="md-fab" aria-label="Eat cake">
+            <i class="material-icons" ng-click="new()">add</i>
+        </md-button>
+    </div>
+</md-content>
