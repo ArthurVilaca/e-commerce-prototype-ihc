@@ -12,9 +12,11 @@
     <body ng-app="app" ng-cloak>
 
         <div data-ng-controller="AppCtrl">
-            <section data-ng-include=" 'pages/header.html' " id="header" class="top-header" style="background-color: #7777bd;"></section>
-            <aside data-ng-include=" 'pages/nav.html' " id="nav-container"></aside>
-
+            <div ng-if="!isSpecificPage()">
+                <section data-ng-include=" 'pages/header.html' " id="header" class="top-header" style="background-color: #7777bd;"></section>
+                <aside data-ng-include=" 'pages/nav.html' " id="nav-container"></aside>
+            </div>
+            
             <div class="view-container">
                 <section data-ng-view id="content" class="animate-fade-up"></section>
             </div>
