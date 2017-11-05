@@ -55,6 +55,21 @@
 				controller: 'ClientController',
 				controllerAs: 'ClientController',
 			})
+			.when('/products', {
+				templateUrl: 'pages/products.html',
+				controller: 'ProductsController',
+				controllerAs: 'ProductsController',
+			})
+			.when('/product/new', {
+				templateUrl: 'pages/product.html',
+				controller: 'ProductController',
+				controllerAs: 'ProductController',
+			})
+			.when('/product/:id', {
+				templateUrl: 'pages/product.html',
+				controller: 'ProductController',
+				controllerAs: 'ProductController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());

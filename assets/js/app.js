@@ -9,7 +9,8 @@
         'app.users',
         'app.service',
         'app.ecommerce',
-        'app.clients'
+        'app.clients',
+        'app.products'
     ]);
     angular.module('app.routes', ['ngRoute', 'ngMaterial']);
     angular.module('app.home', []);
@@ -19,6 +20,7 @@
     angular.module('app.service', []);
     angular.module('app.ecommerce', []);
     angular.module('app.clients', []);
+    angular.module('app.products', []);
 
     angular.module('app').controller('AppCtrl', function($scope, $location, $mdSidenav) {
         $scope.isSpecificPage = function() {
@@ -45,6 +47,11 @@
 
         $scope.toClients = function() {
             $location.path( "/clients" );
+            $mdSidenav('left').close();
+        };
+
+        $scope.toProducts = function() {
+            $location.path( "/products" );
             $mdSidenav('left').close();
         };
 
@@ -180,6 +187,40 @@
             $scope.client.birth = $rootScope.formatServerDate($scope.client._birth);
             $rootScope.saveData('clients', $scope.client);
             $location.path( "/clients" );
+        };
+
+    });
+
+    angular.module('app.products').controller('ProductsController', function($scope, $rootScope, $location) {
+        $scope.toHome = function() {
+            $location.path( "/home" );
+        };
+
+        $scope.new = function() {
+            $location.path( "/product/new" );
+        };
+
+        $scope.edit = function(id) {
+            $location.path( "/product/" + id );
+        };
+
+        $scope.delete = function(id) {
+            $rootScope.deleteData('products', id);
+            $scope.products = $rootScope.getData('products');
+        };
+
+        $scope.products = $rootScope.getData('products');
+    });
+
+    angular.module('app.products').controller('ProductController', function($scope, $rootScope, $location, $routeParams) {
+        
+        if($routeParams.id) {
+            $scope.product = $rootScope.getData('products', $routeParams.id);
+        }
+        
+        $scope.save = function() {
+            $rootScope.saveData('products', $scope.product);
+            $location.path( "/products" );
         };
 
     });
