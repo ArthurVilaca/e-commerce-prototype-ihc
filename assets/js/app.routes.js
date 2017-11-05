@@ -15,6 +15,11 @@
 				controller: 'HomeController',
 				controllerAs: 'HomeController',
 			})
+			.when('/login', {
+				templateUrl: 'pages/login.html',
+				controller: 'LoginController',
+				controllerAs: 'LoginController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());

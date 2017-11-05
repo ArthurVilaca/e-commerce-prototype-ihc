@@ -1,0 +1,28 @@
+<center>
+    
+    <md-content layout-padding>
+        <div>
+            <form name="loginForm" class="login-form">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input required name="email" ng-model="user.email" />
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Senha</label>
+                        <input type="password" required name="senha" ng-model="user.password" />
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-button ng-click="doLogin()" class="md-accent line-block">Login</md-button>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+    </md-content>
+</center>
