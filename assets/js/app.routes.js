@@ -25,6 +25,16 @@
 				controller: 'UsersController',
 				controllerAs: 'UsersController',
 			})
+			.when('/user/new', {
+				templateUrl: 'pages/user.html',
+				controller: 'UserController',
+				controllerAs: 'UserController',
+			})
+			.when('/user/:id', {
+				templateUrl: 'pages/user.html',
+				controller: 'UserController',
+				controllerAs: 'UserController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
