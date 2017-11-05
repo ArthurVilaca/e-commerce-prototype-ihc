@@ -20,6 +20,11 @@
 				controller: 'LoginController',
 				controllerAs: 'LoginController',
 			})
+			.when('/users', {
+				templateUrl: 'pages/users.html',
+				controller: 'UsersController',
+				controllerAs: 'UsersController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());

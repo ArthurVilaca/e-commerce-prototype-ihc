@@ -5,12 +5,16 @@
         'app.routes',
         'app.home',
         'app.sideNav',
-        'app.login'
+        'app.login',
+        'app.users',
+        'app.service'
     ]);
     angular.module('app.routes', ['ngRoute', 'ngMaterial']);
     angular.module('app.home', []);
     angular.module('app.sideNav', []);
     angular.module('app.login', []);
+    angular.module('app.users', []);
+    angular.module('app.service', []);
 
     angular.module('app').controller('AppCtrl', function($scope, $location, $mdSidenav) {
         $scope.isSpecificPage = function() {
@@ -30,6 +34,11 @@
             $mdSidenav('left').close();
         };
 
+        $scope.toUsers = function() {
+            $location.path( "/users" );
+            $mdSidenav('left').close();
+        };
+
         $scope.toLogin = function() {
             $location.path( "/login" );
             $mdSidenav('left').close();
@@ -40,6 +49,14 @@
         $scope.doLogin = function() {
             $location.path( "/home" );
         };
+    });
+
+    angular.module('app.users').controller('UsersController', function($scope, $rootScope, $location) {
+        $scope.toHome = function() {
+            $location.path( "/home" );
+        };
+
+        $scope.users = $rootScope.getData('users');
     });
 
 })();
