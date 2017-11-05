@@ -40,6 +40,21 @@
 				controller: 'ECommerceController',
 				controllerAs: 'ECommerceController',
 			})
+			.when('/clients', {
+				templateUrl: 'pages/clients.html',
+				controller: 'ClientsController',
+				controllerAs: 'ClientsController',
+			})
+			.when('/client/new', {
+				templateUrl: 'pages/client.html',
+				controller: 'ClientController',
+				controllerAs: 'ClientController',
+			})
+			.when('/client/:id', {
+				templateUrl: 'pages/client.html',
+				controller: 'ClientController',
+				controllerAs: 'ClientController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
