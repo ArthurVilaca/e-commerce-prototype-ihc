@@ -1,5 +1,9 @@
-<div layout="column" class="wrapper">
+<div layout="column" class="wrapper form-crud">
     <md-content layout-padding>
+        <div class="header-page">
+            <label>Cadastro Produtos</label>
+        </div>
+
         <form name="productForm">
             <div layout="row">
                 <md-input-container flex="50">
@@ -7,14 +11,49 @@
                     <input type="text" ng-model="product.name">
                 </md-input-container>
 
+                <div flex="50"></div>
+            </div>
+
+            <div layout="row">
                 <md-input-container flex="50">
                     <label>Preço</label>
                     <input type="number" ng-model="product.price">
                 </md-input-container>
+
+                <div flex="50"></div>
             </div>
 
             <div layout="row">
-                <md-button type="submit" ng-click="save()">Salvar</md-button>
+                <md-input-container flex="50">
+                    <label>Peso/Quantidade</label>
+                    <input type="text" ng-model="product.weight">
+                </md-input-container>
+
+                <div flex="50"></div>
+            </div>
+
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Descrição</label>
+                    <input type="text" ng-model="product.description">
+                </md-input-container>
+
+                <div flex="50"></div>
+            </div>
+
+            <div layout="row">
+                <div flex="50">
+                    <label>Tipo produto</label>
+                    <md-radio-group ng-model="product.type">
+                        <md-radio-button value="Remedio">Remedio</md-radio-button>
+                        <md-radio-button value="Alimento">Alimento</md-radio-button>
+                        <md-radio-button value="Outros">Outros</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div layout="row">
+                <md-button type="button" class="button-black" ng-click="save()">Salvar</md-button>
             </div>
         </form>
     </md-content>
