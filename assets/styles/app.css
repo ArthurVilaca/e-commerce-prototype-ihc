@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 600px;
+    max-width: 80%;
     margin: 0 auto;
 }
 
@@ -34,4 +34,41 @@
 
 .login-form {
     width: 70%;
+    margin-top: 20px;
+    border: 1px solid #a78f8f;
+}
+
+.login-form md-input-container {
+    max-width: 80%;
+    margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.button-black {
+    background-color: #bbb3b3;
+    color: black;
+    margin: auto;
+    max-width: 200px;
+}
+
+.small-padding {
+    padding: 10px;
+}
+
+.button-nav {
+    background-color: #bbb3b3;
+    color: black;
+    margin: auto;
+    margin: 10px;
+}
+
+.header-page {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-crud {
+    font-size: 12px;
 }
