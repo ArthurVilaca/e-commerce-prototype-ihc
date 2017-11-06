@@ -117,9 +117,7 @@
 
     });
 
-    angular.module('app.ecommerce').controller('ECommerceController', function($scope, $rootScope, $mdDialog, $mdToast) {
-        $scope.products = $rootScope.getData('products');
-        
+    angular.module('app.ecommerce').controller('ECommerceController', function($scope, $rootScope, $mdDialog, $mdToast, $filter) {
         $scope.addToCart = function(product) {
             product.id = undefined;
             $rootScope.saveData('cart', angular.copy(product));
@@ -128,6 +126,10 @@
                     .textContent('Item adicionado com sucesso!')
                     .hideDelay(3000)
             );
+        };
+
+        $scope.search = function() {
+            $scope.filtered = $filter('filter')($scope.products, $scope.searchKeys);
         };
 
         $scope.openCart = function(ev) {
@@ -144,6 +146,10 @@
                 });
         };
 
+        $scope.products = $rootScope.getData('products');
+        $scope.searchKeys = '';
+
+        $scope.search();
     });
 
     angular.module('app.ecommerce').controller('CartController', function($scope, $rootScope, $location, $mdDialog) {
