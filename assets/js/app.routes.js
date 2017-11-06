@@ -80,6 +80,11 @@
 				controller: 'FinishController',
 				controllerAs: 'FinishController',
 			})
+			.when('/registration', {
+				templateUrl: 'pages/ecommerce/registration.html',
+				controller: 'RegistrationController',
+				controllerAs: 'RegistrationController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
