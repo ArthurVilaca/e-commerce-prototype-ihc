@@ -10,7 +10,8 @@
         'app.service',
         'app.ecommerce',
         'app.clients',
-        'app.products'
+        'app.products',
+        'app.resume'
     ]);
     angular.module('app.routes', ['ngRoute', 'ngMaterial']);
     angular.module('app.home', []);
@@ -21,6 +22,7 @@
     angular.module('app.ecommerce', []);
     angular.module('app.clients', []);
     angular.module('app.products', []);
+    angular.module('app.resume', []);
 
     angular.module('app').controller('AppCtrl', function($scope, $location, $mdSidenav) {
         $scope.isSpecificPage = function() {
@@ -137,7 +139,7 @@
 
     });
 
-    angular.module('app.ecommerce').controller('CartController', function($scope, $rootScope) {
+    angular.module('app.ecommerce').controller('CartController', function($scope, $rootScope, $location, $mdDialog) {
         $scope.cart = $rootScope.getData('cart');
 
         $scope.totalCard = function() {
@@ -151,6 +153,19 @@
         $scope.removeFromCart = function(id) {
             $rootScope.deleteData('cart', id);
             $scope.cart = $rootScope.getData('cart');
+        };
+
+        $scope.toResume = function() {
+            $location.path( "/resume" );
+            $mdDialog.cancel();
+        };
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+
+        $scope.showCart = function() {
+            return $location.path() == '/ecommerce'
         };
 
     });
@@ -223,6 +238,40 @@
             $location.path( "/products" );
         };
 
+    });
+
+    angular.module('app.resume').controller('ResumeController', function($scope, $rootScope, $location, $mdDialog) {
+        $scope.purchase = {};
+        $scope.cart = $rootScope.getData('cart');
+
+        $scope.totalCard = function() {
+            var total = 0;
+            for(var i in $scope.cart) {
+                total += $scope.cart[i].price;
+            }
+            return $rootScope.formatNumber(total);
+        };
+
+        $scope.purchase = function() {
+            $location.path( "/finish" );
+        };
+
+        $scope.openCart = function(ev) {
+            $mdDialog.show({
+                controller: 'CartController',
+                templateUrl: 'pages/ecommerce/cart.modal.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+              });
+        };
+
+    });
+
+    angular.module('app.resume').controller('FinishController', function($scope, $location) {
+        $scope.back = function() {
+            $location.path( "/ecommerce" );
+        };
     });
 
 })();
