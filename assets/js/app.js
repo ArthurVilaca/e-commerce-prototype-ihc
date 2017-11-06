@@ -11,7 +11,8 @@
         'app.ecommerce',
         'app.clients',
         'app.products',
-        'app.resume'
+        'app.resume',
+        'app.registration'
     ]);
     angular.module('app.routes', ['ngRoute', 'ngMaterial']);
     angular.module('app.home', []);
@@ -23,6 +24,7 @@
     angular.module('app.clients', []);
     angular.module('app.products', []);
     angular.module('app.resume', []);
+    angular.module('app.registration', []);
 
     angular.module('app').controller('AppCtrl', function($scope, $location, $mdSidenav) {
         $scope.isSpecificPage = function() {
@@ -59,6 +61,11 @@
 
         $scope.toECommerce = function() {
             $location.path( "/ecommerce" );
+            $mdSidenav('left').close();
+        };
+
+        $scope.toClientsRegistration = function() {
+            $location.path( "/registration" );
             $mdSidenav('left').close();
         };
 
@@ -270,6 +277,14 @@
 
     angular.module('app.resume').controller('FinishController', function($scope, $location) {
         $scope.back = function() {
+            $location.path( "/ecommerce" );
+        };
+    });
+
+    angular.module('app.registration').controller('RegistrationController', function($scope, $location) {
+        $scope.user = {};
+        
+        $scope.register = function() {
             $location.path( "/ecommerce" );
         };
     });
