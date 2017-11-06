@@ -70,6 +70,16 @@
 				controller: 'ProductController',
 				controllerAs: 'ProductController',
 			})
+			.when('/resume', {
+				templateUrl: 'pages/ecommerce/resume.html',
+				controller: 'ResumeController',
+				controllerAs: 'ResumeController',
+			})
+			.when('/finish', {
+				templateUrl: 'pages/ecommerce/finish.html',
+				controller: 'FinishController',
+				controllerAs: 'FinishController',
+			})
 			.otherwise({redirectTo: '/home'});
 	}
 }());
