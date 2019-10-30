@@ -1,3 +1,4 @@
+# deprecated
 # e-commerce-prototype-ihc
 
 Protótipo de um sistema farmaceutico
